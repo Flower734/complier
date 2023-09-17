@@ -1,0 +1,163 @@
+digraph "a-main.c.233t.veclower" {
+overlap=false;
+subgraph "cluster_main" {
+	style="dashed";
+	color="black";
+	label="main ()";
+	fn_0_basic_block_0 [shape=Mdiamond,style=filled,fillcolor=white,label="ENTRY"];
+
+	fn_0_basic_block_1 [shape=Mdiamond,style=filled,fillcolor=white,label="EXIT"];
+
+	fn_0_basic_block_2 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 2\>:\l\
+|number\ =\ 0;\l\
+|scanf\ (\"%d\",\ &number);\l\
+|number.0_1\ =\ number;\l\
+|_2\ =\ Fibonacci_loop\ (number.0_1);\l\
+|number.1_3\ =\ number;\l\
+|printf\ (\"(Loop)The\ %d\ Fibonacci\ number\ is\ %lld.\\n\",\ number.1_3,\ _2);\l\
+|number.2_4\ =\ number;\l\
+|_5\ =\ Fibonacci_recursive\ (number.2_4);\l\
+|number.3_6\ =\ number;\l\
+|printf\ (\"(Recursive)The\ %d\ Fibonacci\ number\ is\ %lld.\\n\",\ number.3_6,\ _5);\l\
+|_14\ =\ 0;\l\
+|number\ =\{v\}\ \{CLOBBER\};\l\
+}"];
+
+	fn_0_basic_block_3 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 3\>:\l\
+|\<L1\>:\l\
+|return\ _14;\l\
+}"];
+
+	fn_0_basic_block_0:s -> fn_0_basic_block_2:n [style="solid,bold",color=blue,weight=100,constraint=true];
+	fn_0_basic_block_2:s -> fn_0_basic_block_3:n [style="solid,bold",color=blue,weight=100,constraint=true];
+	fn_0_basic_block_3:s -> fn_0_basic_block_1:n [style="solid,bold",color=black,weight=10,constraint=true];
+	fn_0_basic_block_0:s -> fn_0_basic_block_1:n [style="invis",constraint=true];
+}
+subgraph "cluster_Fibonacci_loop" {
+	style="dashed";
+	color="black";
+	label="Fibonacci_loop ()";
+	subgraph cluster_1_1 {
+	style="filled";
+	color="darkgreen";
+	fillcolor="grey88";
+	label="loop 1";
+	labeljust=l;
+	penwidth=2;
+	fn_1_basic_block_6 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 6\>:\l\
+|#\ LastNum_1\ =\ PHI\ \<LastNum_6(4),\ LastNum_11(5)\>\l\
+|#\ LastLastNum_2\ =\ PHI\ \<LastLastNum_7(4),\ LastLastNum_12(5)\>\l\
+|#\ i_3\ =\ PHI\ \<i_8(4),\ i_13(5)\>\l\
+|if\ (i_3\ \<=\ num_5(D))\l\
+\ \ goto\ \<bb\ 5\>;\ [INV]\l\
+else\l\
+\ \ goto\ \<bb\ 7\>;\ [INV]\l\
+}"];
+
+	fn_1_basic_block_5 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 5\>:\l\
+|temp_10\ =\ LastNum_1;\l\
+|LastNum_11\ =\ LastLastNum_2\ +\ LastNum_1;\l\
+|LastLastNum_12\ =\ temp_10;\l\
+|i_13\ =\ i_3\ +\ 1;\l\
+}"];
+
+	}
+	fn_1_basic_block_0 [shape=Mdiamond,style=filled,fillcolor=white,label="ENTRY"];
+
+	fn_1_basic_block_1 [shape=Mdiamond,style=filled,fillcolor=white,label="EXIT"];
+
+	fn_1_basic_block_2 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 2\>:\l\
+|if\ (num_5(D)\ ==\ 0)\l\
+\ \ goto\ \<bb\ 3\>;\ [INV]\l\
+else\l\
+\ \ goto\ \<bb\ 4\>;\ [INV]\l\
+}"];
+
+	fn_1_basic_block_3 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 3\>:\l\
+|_14\ =\ (long\ long\ int)\ num_5(D);\l\
+|//\ predicted\ unlikely\ by\ early\ return\ (on\ trees)\ predictor.\l\
+goto\ \<bb\ 8\>;\ [INV]\l\
+}"];
+
+	fn_1_basic_block_4 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 4\>:\l\
+|LastNum_6\ =\ 1;\l\
+|LastLastNum_7\ =\ 1;\l\
+|i_8\ =\ 3;\l\
+goto\ \<bb\ 6\>;\ [INV]\l\
+}"];
+
+	fn_1_basic_block_7 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 7\>:\l\
+|_9\ =\ LastNum_1;\l\
+}"];
+
+	fn_1_basic_block_8 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 8\>:\l\
+|#\ _4\ =\ PHI\ \<_14(3),\ _9(7)\>\l\
+|\<L5\>:\l\
+|return\ _4;\l\
+}"];
+
+	fn_1_basic_block_0:s -> fn_1_basic_block_2:n [style="solid,bold",color=blue,weight=100,constraint=true];
+	fn_1_basic_block_2:s -> fn_1_basic_block_3:n [style="solid,bold",color=black,weight=10,constraint=true];
+	fn_1_basic_block_2:s -> fn_1_basic_block_4:n [style="solid,bold",color=black,weight=10,constraint=true];
+	fn_1_basic_block_3:s -> fn_1_basic_block_8:n [style="solid,bold",color=blue,weight=100,constraint=true];
+	fn_1_basic_block_4:s -> fn_1_basic_block_6:n [style="solid,bold",color=blue,weight=100,constraint=true];
+	fn_1_basic_block_5:s -> fn_1_basic_block_6:n [style="dotted,bold",color=blue,weight=10,constraint=false];
+	fn_1_basic_block_6:s -> fn_1_basic_block_5:n [style="solid,bold",color=black,weight=10,constraint=true];
+	fn_1_basic_block_6:s -> fn_1_basic_block_7:n [style="solid,bold",color=black,weight=10,constraint=true];
+	fn_1_basic_block_7:s -> fn_1_basic_block_8:n [style="solid,bold",color=blue,weight=100,constraint=true];
+	fn_1_basic_block_8:s -> fn_1_basic_block_1:n [style="solid,bold",color=black,weight=10,constraint=true];
+	fn_1_basic_block_0:s -> fn_1_basic_block_1:n [style="invis",constraint=true];
+}
+subgraph "cluster_Fibonacci_recursive" {
+	style="dashed";
+	color="black";
+	label="Fibonacci_recursive ()";
+	fn_2_basic_block_0 [shape=Mdiamond,style=filled,fillcolor=white,label="ENTRY"];
+
+	fn_2_basic_block_1 [shape=Mdiamond,style=filled,fillcolor=white,label="EXIT"];
+
+	fn_2_basic_block_2 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 2\>:\l\
+|if\ (num_7(D)\ ==\ 1)\l\
+\ \ goto\ \<bb\ 4\>;\ [INV]\l\
+else\l\
+\ \ goto\ \<bb\ 3\>;\ [INV]\l\
+}"];
+
+	fn_2_basic_block_3 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 3\>:\l\
+|if\ (num_7(D)\ ==\ 0)\l\
+\ \ goto\ \<bb\ 4\>;\ [INV]\l\
+else\l\
+\ \ goto\ \<bb\ 5\>;\ [INV]\l\
+}"];
+
+	fn_2_basic_block_4 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 4\>:\l\
+|_12\ =\ (long\ long\ int)\ num_7(D);\l\
+|//\ predicted\ unlikely\ by\ early\ return\ (on\ trees)\ predictor.\l\
+goto\ \<bb\ 6\>;\ [INV]\l\
+}"];
+
+	fn_2_basic_block_5 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 5\>:\l\
+|_1\ =\ num_7(D)\ +\ -1;\l\
+|_2\ =\ Fibonacci_recursive\ (_1);\l\
+|_3\ =\ num_7(D)\ +\ -2;\l\
+|_4\ =\ Fibonacci_recursive\ (_3);\l\
+|_11\ =\ _2\ +\ _4;\l\
+}"];
+
+	fn_2_basic_block_6 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 6\>:\l\
+|#\ _5\ =\ PHI\ \<_12(4),\ _11(5)\>\l\
+|\<L3\>:\l\
+|return\ _5;\l\
+}"];
+
+	fn_2_basic_block_0:s -> fn_2_basic_block_2:n [style="solid,bold",color=blue,weight=100,constraint=true];
+	fn_2_basic_block_2:s -> fn_2_basic_block_4:n [style="solid,bold",color=black,weight=10,constraint=true];
+	fn_2_basic_block_2:s -> fn_2_basic_block_3:n [style="solid,bold",color=black,weight=10,constraint=true];
+	fn_2_basic_block_3:s -> fn_2_basic_block_4:n [style="solid,bold",color=black,weight=10,constraint=true];
+	fn_2_basic_block_3:s -> fn_2_basic_block_5:n [style="solid,bold",color=black,weight=10,constraint=true];
+	fn_2_basic_block_4:s -> fn_2_basic_block_6:n [style="solid,bold",color=blue,weight=100,constraint=true];
+	fn_2_basic_block_5:s -> fn_2_basic_block_6:n [style="solid,bold",color=blue,weight=100,constraint=true];
+	fn_2_basic_block_6:s -> fn_2_basic_block_1:n [style="solid,bold",color=black,weight=10,constraint=true];
+	fn_2_basic_block_0:s -> fn_2_basic_block_1:n [style="invis",constraint=true];
+}
+}

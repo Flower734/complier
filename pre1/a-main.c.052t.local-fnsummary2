@@ -1,0 +1,195 @@
+
+;; Function Fibonacci_loop (Fibonacci_loop, funcdef_no=1, decl_uid=2345, cgraph_uid=2, symbol_order=1)
+
+
+Analyzing function body size: Fibonacci_loop/1
+
+IPA function summary for Fibonacci_loop/1
+  global time:     8.000000
+  self size:       9
+  global size:     9
+  min size:       0
+  self stack:      0
+  global stack:    0
+    size:7.000000, time:8.000000
+    size:2.000000, time:0.000000,  executed if:(not inlined)
+  calls:
+
+long long int Fibonacci_loop (int num)
+{
+  long long int temp;
+  int i;
+  long long int LastLastNum;
+  long long int LastNum;
+  long long int D.2371;
+  long long int _4;
+  long long int _9;
+  long long int _14;
+
+  <bb 2> :
+  if (num_5(D) == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  _14 = (long long int) num_5(D);
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 8>; [INV]
+
+  <bb 4> :
+  LastNum_6 = 1;
+  LastLastNum_7 = 1;
+  i_8 = 3;
+  goto <bb 6>; [INV]
+
+  <bb 5> :
+  temp_10 = LastNum_1;
+  LastNum_11 = LastLastNum_2 + LastNum_1;
+  LastLastNum_12 = temp_10;
+  i_13 = i_3 + 1;
+
+  <bb 6> :
+  # LastNum_1 = PHI <LastNum_6(4), LastNum_11(5)>
+  # LastLastNum_2 = PHI <LastLastNum_7(4), LastLastNum_12(5)>
+  # i_3 = PHI <i_8(4), i_13(5)>
+  if (i_3 <= num_5(D))
+    goto <bb 5>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 7> :
+  _9 = LastNum_1;
+
+  <bb 8> :
+  # _4 = PHI <_14(3), _9(7)>
+<L5>:
+  return _4;
+
+}
+
+
+
+;; Function Fibonacci_recursive (Fibonacci_recursive, funcdef_no=2, decl_uid=2347, cgraph_uid=3, symbol_order=2)
+
+
+Analyzing function body size: Fibonacci_recursive/2
+
+IPA function summary for Fibonacci_recursive/2
+  global time:     33.000000
+  self size:       16
+  global size:     16
+  min size:       0
+  self stack:      0
+  global stack:    0
+    size:8.000000, time:9.000000
+    size:2.000000, time:0.000000,  executed if:(not inlined)
+  calls:
+    Fibonacci_recursive/2 function not considered for inlining
+      freq:1.00 loop depth: 0 size: 3 time: 12 callee size: 8 stack: 0
+    Fibonacci_recursive/2 function not considered for inlining
+      freq:1.00 loop depth: 0 size: 3 time: 12 callee size: 8 stack: 0
+
+long long int Fibonacci_recursive (int num)
+{
+  long long int D.2376;
+  int _1;
+  long long int _2;
+  int _3;
+  long long int _4;
+  long long int _5;
+  long long int _11;
+  long long int _12;
+
+  <bb 2> :
+  if (num_7(D) == 1)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 3>; [INV]
+
+  <bb 3> :
+  if (num_7(D) == 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  _12 = (long long int) num_7(D);
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 6>; [INV]
+
+  <bb 5> :
+  _1 = num_7(D) + -1;
+  _2 = Fibonacci_recursive (_1);
+  _3 = num_7(D) + -2;
+  _4 = Fibonacci_recursive (_3);
+  _11 = _2 + _4;
+
+  <bb 6> :
+  # _5 = PHI <_12(4), _11(5)>
+<L3>:
+  return _5;
+
+}
+
+
+
+;; Function main (main, funcdef_no=0, decl_uid=2348, cgraph_uid=1, symbol_order=0)
+
+
+Analyzing function body size: main/0
+
+IPA function summary for main/0
+  global time:     69.000000
+  self size:       25
+  global size:     25
+  min size:       0
+  self stack:      0
+  global stack:    0
+    size:6.000000, time:7.000000
+    size:2.000000, time:0.000000,  executed if:(not inlined)
+  calls:
+    printf/4 function body not available
+      freq:1.00 loop depth: 0 size: 4 time: 13
+    Fibonacci_recursive/2 function not considered for inlining
+      freq:1.00 loop depth: 0 size: 3 time: 12 callee size: 8 stack: 0
+    printf/4 function body not available
+      freq:1.00 loop depth: 0 size: 4 time: 13
+    Fibonacci_loop/1 function not considered for inlining
+      freq:1.00 loop depth: 0 size: 3 time: 12 callee size: 4 stack: 0
+    scanf/3 function body not available
+      freq:1.00 loop depth: 0 size: 3 time: 12
+
+int main ()
+{
+  int number;
+  int D.2366;
+  int number.0_1;
+  long long int _2;
+  int number.1_3;
+  int number.2_4;
+  long long int _5;
+  int number.3_6;
+  int _14;
+
+  <bb 2> :
+  number = 0;
+  scanf ("%d", &number);
+  number.0_1 = number;
+  _2 = Fibonacci_loop (number.0_1);
+  number.1_3 = number;
+  printf ("(Loop)The %d Fibonacci number is %lld.\n", number.1_3, _2);
+  number.2_4 = number;
+  _5 = Fibonacci_recursive (number.2_4);
+  number.3_6 = number;
+  printf ("(Recursive)The %d Fibonacci number is %lld.\n", number.3_6, _5);
+  _14 = 0;
+  number ={v} {CLOBBER};
+
+  <bb 3> :
+<L1>:
+  return _14;
+
+}
+
+

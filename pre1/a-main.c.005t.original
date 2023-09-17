@@ -1,0 +1,65 @@
+
+;; Function main (null)
+;; enabled by -tree-original
+
+
+{
+  int number = 0;
+
+    int number = 0;
+  scanf ((const char * restrict) "%d", &number);
+  printf ((const char * restrict) "(Loop)The %d Fibonacci number is %lld.\n", number, Fibonacci_loop (number));
+  printf ((const char * restrict) "(Recursive)The %d Fibonacci number is %lld.\n", number, Fibonacci_recursive (number));
+  return 0;
+}
+return 0;
+
+
+;; Function Fibonacci_loop (null)
+;; enabled by -tree-original
+
+
+{
+  long long int LastNum = 1;
+  long long int LastLastNum = 1;
+
+  if (num == 0)
+    {
+      return (long long int) num;
+    }
+    long long int LastNum = 1;
+    long long int LastLastNum = 1;
+  {
+    int i = 3;
+
+        int i = 3;
+    goto <D.2361>;
+    <D.2360>:;
+    {
+      long long int temp = LastNum;
+
+            long long int temp = LastNum;
+      LastNum = LastLastNum + LastNum;
+      LastLastNum = temp;
+    }
+     ++i;
+    <D.2361>:;
+    if (i <= num) goto <D.2360>; else goto <D.2358>;
+    <D.2358>:;
+  }
+  return LastNum;
+}
+
+
+;; Function Fibonacci_recursive (null)
+;; enabled by -tree-original
+
+
+{
+  if (num == 1 || num == 0)
+    {
+      return (long long int) num;
+    }
+  return Fibonacci_recursive (num + -1) + Fibonacci_recursive (num + -2);
+}
+
